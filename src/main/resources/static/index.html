@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Transport Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🚌 Transport Management</h1>
+    <nav>
+        <button onclick="showPage('buses')">Автобусы</button>
+        <button onclick="showPage('add')">Добавить</button>
+        <button onclick="showPage('about')">О проекте</button>
+    </nav>
+</header>
+
+<main>
+
+    <!-- BUS LIST -->
+    <section id="buses" class="page">
+        <h2>📋 Список автобусов</h2>
+
+        <input
+                type="number"
+                placeholder="Поиск по маршруту..."
+                id="searchInput"
+                oninput="filterBuses()"
+        >
+
+        <table>
+            <thead>
+            <tr>
+                <th>Маршрут</th>
+                <th>Вместимость</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody id="busTable"></tbody>
+        </table>
+    </section>
+
+    <!-- ADD BUS -->
+    <section id="add" class="page hidden">
+        <h2>➕ Добавить автобус</h2>
+
+        <input id="routeInput" placeholder="Номер маршрута" type="number">
+        <input id="capacityInput" placeholder="Вместимость" type="number">
+
+        <button class="primary" onclick="addBus()">Добавить</button>
+        <p id="addStatus"></p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page hidden">
+        <h2>ℹ О проекте</h2>
+        <p>
+            Учебный проект по Java + PostgreSQL + Spring Boot.
+            Реализован REST API и frontend без фреймворков.
+        </p>
+        <ul>
+            <li>GET /buses</li>
+            <li>POST /buses</li>
+            <li>DELETE /buses/{route}</li>
+        </ul>
+    </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
